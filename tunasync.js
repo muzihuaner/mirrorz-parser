@@ -20,7 +20,7 @@ const statusConverter = function(item) {
           s += "O" + item["last_update_ts"].toString(); // last successful sync is still important
   }
   else if (s == "F" && "last_ended_ts" in item && item["last_ended_ts"] > 0) {
-      s += item["last_ended_ts"].toString(); // last attemped
+      s += item["last_ended_ts"].toString(); // last attempted
       if ("last_update_ts" in item && item["last_update_ts"] > 0)
           s += "O" + item["last_update_ts"].toString(); // last successful sync is still important
   }
