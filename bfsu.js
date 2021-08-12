@@ -3,8 +3,8 @@ const options = require("./options");
 const isoinfo = require("./isoinfo");
 const disk = require("./disk");
 
-module.exports = async function () {
-  const site = await (await fetch("https://mirrorz.org/static/json/site/bfsu.json")).json();
+module.exports = async function (siteUrl) {
+  const site = await (await fetch(siteUrl)).json();
   site["disk"] = await disk("https://mirrors.bfsu.edu.cn/static/status/disk.json");
 
   let mirrors = await tunasync("https://mirrors.bfsu.edu.cn/static/tunasync.json");

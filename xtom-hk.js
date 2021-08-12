@@ -1,8 +1,8 @@
 const ustclugv1 = require("./ustclug-v1");
 
-module.exports = async function () {
+module.exports = async function (siteUrl) {
   const site = await (
-    await fetch("https://mirrorz.org/static/json/site/xtom-hk.json")
+    await fetch(siteUrl)
   ).json();
   const data = await ustclugv1(
     "https://r.zenithal.workers.dev/https://mirrors.xtom.com.hk/",

@@ -14,9 +14,9 @@ const statusConverter = function(status) {
 };
 
 
-module.exports = async function () {
+module.exports = async function (siteUrl) {
   const name_func = await cname();
-  const site = await (await fetch("https://mirrorz.org/static/json/site/zju.json")).json();
+  const site = await (await fetch(siteUrl)).json();
   const html = await (await fetch("https://r.zenithal.workers.dev/https://mirrors.zju.edu.cn/")).text();
 
   const parser = new DOMParser();

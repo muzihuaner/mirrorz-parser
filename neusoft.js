@@ -30,9 +30,9 @@ const human = function(size) {
   return size.toFixed(2) + scale[i];
 }
 
-module.exports = async function () {
+module.exports = async function (siteUrl) {
   const name_func = await cname();
-  const site = await (await fetch("https://mirrorz.org/static/json/site/neusoft.json")).json();
+  const site = await (await fetch(siteUrl)).json();
   const repos = await (await fetch("https://mirrors.neusoft.edu.cn/repos.html")).json();
 
   const mirrors = [];

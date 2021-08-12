@@ -8,9 +8,9 @@ const MAP = {
   failed: "F",
 }
 
-module.exports = async function () {
+module.exports = async function (siteUrl) {
   const name_func = await cname();
-  const site = await (await fetch("https://mirrorz.org/static/json/site/neu.json")).json();
+  const site = await (await fetch(siteUrl)).json();
   const repo = await (await fetch("http://mirror.neu.edu.cn/assets/js/repertories.json")).json();
 
   const mirrors = await Promise.all(repo.map(async (item) => {

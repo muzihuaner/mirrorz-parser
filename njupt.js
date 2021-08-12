@@ -1,8 +1,8 @@
 const ideal_mirror = require("./ideal-mirror");
 const isoinfo = require("./isoinfo");
 
-module.exports = async function () {
-  const site = await (await fetch("https://mirrorz.org/static/json/site/njupt.json")).json();
+module.exports = async function (siteUrl) {
+  const site = await (await fetch(siteUrl)).json();
   const info = await isoinfo("https://mirrors.njupt.edu.cn/isoinfo.json");
   let mirrors = await ideal_mirror("https://mirrors.njupt.edu.cn/mirrordsync.json");
 
