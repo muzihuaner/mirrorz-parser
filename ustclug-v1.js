@@ -1,23 +1,23 @@
 const cname = require("./utils").cname;
 
 const size = function (bytes) {
-  mib = bytes / 1024 / 1024;
+  const mib = bytes / 1024 / 1024;
   if (mib < 1024) {
     return mib.toFixed(2) + " MiB";
   }
-  gib = mib / 1024;
+  const gib = mib / 1024;
   if (gib < 1024) {
     return gib.toFixed(2) + " GiB";
   }
-  tib = gib / 1024;
+  const tib = gib / 1024;
   return tib.toFixed(2) + " TiB";
 };
 
 module.exports = async function (homepageURL, yukiURL) {
   const name_func = await cname();
-  homepageHTML = await (await fetch(homepageURL)).text();
+  const homepageHTML = await (await fetch(homepageURL)).text();
   // yukiMeta = await (await fetch(yukiURL)).json();
-  yukiMeta = await fetch(yukiURL);
+  let yukiMeta = await fetch(yukiURL);
   if (yukiMeta.ok) {
     yukiMeta = await yukiMeta.json();
   } else {

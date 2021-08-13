@@ -36,7 +36,7 @@ module.exports = async function (siteUrl) {
   const repos = await (await fetch("https://mirrors.neusoft.edu.cn/repos.html")).json();
 
   const mirrors = [];
-  for (k in repos) {
+  for (const k in repos) {
     const cname = name_func(k)
     const url = "/" + k;
     const size = human(repos[k].size);
