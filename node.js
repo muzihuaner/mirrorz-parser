@@ -23,7 +23,7 @@ const load = async (source) => {
     const resp = await fetch(source);
     if (resp === null)
       return null;
-    return await resp.json();
+    return await resp.json().catch(_ => null);
   } else {
     return await Timeout.wrap(source(), timeout, 'Timeout').catch(() => null);
   }
