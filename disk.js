@@ -9,6 +9,8 @@ const human = function(size) {
 }
 
 module.exports = async function (diskUrl) {
-  const disk = await (await fetch(diskUrl)).json();
-  return human(disk.used_kb) + "/" + human(disk.total_kb);
+  var disk = await (await fetch(diskUrl)).json();
+  if(!Array.isArray(disk))
+    disk = [disk];
+  return disk.map((d) => human(d.used_kb) + "/" + human(d.total_kb)).join(' + ');
 };
