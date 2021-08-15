@@ -41,7 +41,7 @@ module.exports = async function () {
   const info = await isoinfo("https://mirror.nju.edu.cn/.mirrorz/iso.json");
 
   let mirrors = await tunasync("https://mirrors.nju.edu.cn/.mirrorz/tunasync.json");
-  mirrors = await addition("https://mirrors.nju.edu.cn/configs/addition.json", mirrors);
+  mirrors = await addition("https://mirror.nju.edu.cn/.mirrorz/addition.json", mirrors);
 
   return {
     site,
