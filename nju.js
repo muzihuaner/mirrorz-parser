@@ -36,12 +36,28 @@ async function addition(additionUrl, mirrors) {
   return mirrors;
 }
 
+async function help(helpUrl, mirrors) {
+  const data = await (await fetch(helpUrl)).json();
+
+  data.forEach((u) => {
+    mirrors.forEach((m) => {
+      if (m.options_name == u.name) {
+        m.help = u.route
+      }
+    });
+  });
+
+  return mirrors;
+}
+
+
 module.exports = async function () {
   const site = await (await fetch("https://mirrors.nju.edu.cn/.mirrorz/site.json")).json();
   const info = await isoinfo("https://mirror.nju.edu.cn/.mirrorz/iso.json");
 
   let mirrors = await tunasync("https://mirrors.nju.edu.cn/.mirrorz/tunasync.json");
   mirrors = await addition("https://mirror.nju.edu.cn/.mirrorz/addition.json", mirrors);
+  mirrors = await help("https://mirror.nju.edu.cn/.mirrorz/help.json", mirrors);
 
   return {
     site,
