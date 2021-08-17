@@ -14,18 +14,18 @@ module.exports = async function (mirrordURL) {
   const name_func = await cname();
   const mirrord = await (await fetch(mirrordURL)).json();
 
-  mirrors = [];
-  for (let mirror in mirrord) {
-    d = mirrord[mirror]
-    m = {
+  const mirrors = [];
+  for (const mirror in mirrord) {
+    const d = mirrord[mirror]
+    const m = {
       cname: name_func(mirror),
       url: "/" + mirror,
     };
     if ("upstream" in d)
       m["upstream"] = d.upstream;
 
-    dateTimestamp = parseInt((new Date(d.date + " UTC+8").getTime() / 1000).toFixed(0)).toString()
-    scheduleTimestamp = parseInt((new Date(d.schedule + " UTC+8").getTime() / 1000).toFixed(0)).toString()
+    const dateTimestamp = parseInt((new Date(d.date + " UTC+8").getTime() / 1000).toFixed(0)).toString()
+    const scheduleTimestamp = parseInt((new Date(d.schedule + " UTC+8").getTime() / 1000).toFixed(0)).toString()
 
     if (d.status == 2 && d.exitcode == 0)
       m["status"] = "S" + dateTimestamp
