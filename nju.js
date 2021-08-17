@@ -19,8 +19,10 @@ async function addition(additionUrl, mirrors) {
       });
     } else {
       exist = true;
-      if (u.name === "Docker Hub")
-        status = "C";
+      if ("status" in u) {
+        if (u.status === "cache")
+          status = "C";
+      }
     }
 
     if (exist) {
