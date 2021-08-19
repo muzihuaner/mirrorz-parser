@@ -28,7 +28,7 @@ async function addition(additionUrl, mirrors) {
     if (exist) {
       const mirror = {
         cname: name_func(u.name),
-        url: "route" in u ? u.route : "/" + u.name,
+        url: "route" in u ? u.route : ("path" in u ? u.path : "/" + u.name),
         status,
       }
       mirrors.push(mirror);
