@@ -25,6 +25,7 @@ const xtom_ee = require("./xtom-ee");
 const njupt = require("./njupt");
 const wsyu = require("./wsyu");
 const bjtu = require("./bjtu");
+const bupt = require("./bupt");
 
 const config = require('./config.json')
 
@@ -58,4 +59,5 @@ module.exports = {
   "njupt"   : async () => njupt   (site("njupt"   )),
   "wsyu"    :             wsyu                      ,
   "bjtu"    : async () => bjtu    (site("bjtu"    )),
+  "bupt"    : async () => bjtu    (site("bupt"    )),
 };
