@@ -18,10 +18,19 @@ async function addition(additionUrl, mirrors) {
         }
       });
     } else {
-      exist = true;
-      if ("status" in u) {
-        if (u.status === "cache")
-          status = "C";
+      let in_tunasync = false;
+      mirrors.forEach((m) => {
+        if (m.options_name == u.name) {
+          in_tunasync = true;
+          m.url = "route" in u ? u.route : ("path" in u ? u.path : "/" + u.name);
+        }
+      });
+      if (!in_tunasync) {
+        exist = true;
+        if ("status" in u) {
+          if (u.status === "cache")
+            status = "C";
+        }
       }
     }
 
