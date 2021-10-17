@@ -22,6 +22,7 @@ const xtom = require("./xtom");
 const xtom_de = require("./xtom-de");
 const xtom_nl = require("./xtom-nl");
 const xtom_ee = require("./xtom-ee");
+const xtom_jp = require("./xtom-jp");
 const njupt = require("./njupt");
 const wsyu = require("./wsyu");
 const bjtu = require("./bjtu");
@@ -58,6 +59,7 @@ module.exports = {
   "xtom-de" : async () => xtom_de (site("xtom-de" )),
   "xtom-nl" : async () => xtom_nl (site("xtom-nl" )),
   "xtom-ee" : async () => xtom_ee (site("xtom-ee" )),
+  "xtom-jp" : async () => xtom_jp (site("xtom-jp" )),
   "njupt"   : async () => njupt   (site("njupt"   )),
   "wsyu"    :             wsyu                      ,
   "bjtu"    : async () => bjtu    (site("bjtu"    )),
