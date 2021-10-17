@@ -26,6 +26,7 @@ const njupt = require("./njupt");
 const wsyu = require("./wsyu");
 const bjtu = require("./bjtu");
 const bupt = require("./bupt");
+const sdu = require("./sdu");
 
 const config = require('./config.json')
 
@@ -60,4 +61,5 @@ module.exports = {
   "wsyu"    :             wsyu                      ,
   "bjtu"    : async () => bjtu    (site("bjtu"    )),
   "bupt"    : async () => bjtu    (site("bupt"    )),
+  "sdu"     : async () => sdu     (site("sdu"     )),
 };
