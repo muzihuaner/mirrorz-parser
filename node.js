@@ -1,4 +1,4 @@
-const init = () => {
+const init = (config, mirrorzRepo) => {
   const jsdom = require("jsdom");
   const { JSDOM } = jsdom;
   global.DOMParser = new JSDOM().window.DOMParser;
@@ -9,10 +9,13 @@ const init = () => {
   global.timeout = timeout;
 
   fetch_extra = require("node-fetch-extra");
+  const headers = new fetch_extra.Headers({
+    'User-Agent': `mirrorz-parser/1.0 (+https://github.com/mirrorz-org/mirrorz-parser) ${config.url} ${mirrorzRepo}`,
+  });
   async function fetchV6First (u, opt) {
-    const promise = fetch_extra(u, {family: 6, ...opt});
+    const promise = fetch_extra(u, { ...opt, family: 6, headers });
     return await Timeout.wrap(promise, timeout/10, 'Timeout').catch(async (e) => {
-      const promise = fetch_extra(u, opt);
+      const promise = fetch_extra(u, { ...opt, headers });
       return await Timeout.wrap(promise, timeout/3, 'Timeout').catch(() => null);
     });
   }
