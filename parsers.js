@@ -28,7 +28,6 @@ const wsyu = require("./wsyu");
 const bjtu = require("./bjtu");
 const bupt = require("./bupt");
 const sdu = require("./sdu");
-const xidian = require("./xidian");
 
 const config = require('./config.json')
 
@@ -65,5 +64,4 @@ module.exports = {
   "bjtu"    : async () => bjtu    (site("bjtu"    )),
   "bupt"    : async () => bjtu    (site("bupt"    )),
   "sdu"     : async () => sdu     (site("sdu"     )),
-  "xidian"  : async () => xidian  (site("xidian"  )),
 };
