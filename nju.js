@@ -37,6 +37,7 @@ async function addition(additionUrl, mirrors) {
     if (exist) {
       const mirror = {
         cname: name_func(u.name),
+        options_name: u.name, // used by help()
         url: "route" in u ? u.route : ("path" in u ? u.path : "/" + u.name),
         status,
       }
@@ -53,7 +54,11 @@ async function help(helpUrl, mirrors) {
   data.forEach((u) => {
     mirrors.forEach((m) => {
       if (m.options_name == u.name) {
-        m.help = u.route
+        if ("route" in u) {
+          m.help = u.route;
+        } else if ("redirect" in u) {
+          m.help = u.redirect;
+        }
       }
     });
   });
