@@ -1,7 +1,6 @@
 const lzu = require("./lzu");
 const nju = require("./nju");
 const neusoft = require("./neusoft");
-const hust = require("./hust");
 const tuna = require("./tuna");
 const bfsu = require("./bfsu");
 const nano = require("./nano");
@@ -37,7 +36,6 @@ module.exports = {
   "lzu"     : async () => lzu     (site("lzu"     )),
   "nju"     :             nju                       ,
   "neusoft" : async () => neusoft (site("neusoft" )),
-  "hust"    : async () => hust    (site("hust"    )),
   "tuna"    : async () => tuna    (site("tuna"    )),
   "bfsu"    : async () => bfsu    (site("bfsu"    )),
   "nano"    : async () => nano    (site("nano"    )),
