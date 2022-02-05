@@ -58,6 +58,6 @@ module.exports = {
   "njupt"   : async () => njupt   (site("njupt"   )),
   "wsyu"    :             wsyu                      ,
   "bjtu"    : async () => bjtu    (site("bjtu"    )),
-  "bupt"    : async () => bjtu    (site("bupt"    )),
+  "bupt"    : async () => bupt    (site("bupt"    )),
   "njtech"  : async () => njtech  (site("njtech"  )),
 };
