@@ -29,8 +29,6 @@ const human = function(size) {
 module.exports = async function (siteUrl) {
   const name_func = await cname();
   const site = await (await fetch(siteUrl)).json();
-  const disk = await (await fetch("https://mirrors.pku.edu.cn/monitor_device/api/v1/data?chart=disk_space._data&after=-1&before=0&points=1&group=average&gtime=0&format=json&options=seconds&options=jsonwrap")).json();
-  site.disk = human(disk.latest_values[1]) + "/" + human(disk.latest_values[0] + disk.latest_values[1]);
 
   const stat = await (await fetch("https://mirrors.pku.edu.cn/monitor/status")).json();
 
