@@ -1,4 +1,4 @@
-const ideal_mirror = require("./ideal-mirror");
+const tunasync = require("./tunasync");
 const isoinfo = require("./isoinfo");
 
 module.exports = async function (siteUrl) {
