@@ -1,5 +1,4 @@
 const tunasync = require("./tunasync");
-const options = require("./options");
 const isoinfo = require("./isoinfo");
 const cname = require("./utils").cname;
 

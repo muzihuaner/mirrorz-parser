@@ -41,13 +41,19 @@ module.exports = async function (optionsUrl, mirrors) {
 
   for (const f of options.options.force_redirect_help_mirrors)
     for (const m of mirrors)
-      if (m.options_name == f)
+      // a hack for tuna/bfsu, they put .git in /git/xxx.git
+      if (m.options_name == f && !m.options_name.includes(".git"))
         m.url = m.help;
 
   for (const n of options.options.new_mirrors)
     for (const m of mirrors)
       if (m.options_name == n)
         m.status += "N";
+
+  // a hack for tuna/bfsu, they put .git in /git/xxx.git
+  for (const m of mirrors)
+    if (m.options_name && m.options_name.includes(".git")) // in case of null options_name
+      m.url = '/git' + m.url
 
   return mirrors;
 };
