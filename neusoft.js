@@ -1,23 +1,9 @@
 const cname = require("./utils").cname;
 
 const statusConverter = function(time, status) {
-  let c = undefined;
-  if (status == 0)
-    c = "S"
-  else if (status == -1)
-    c = "Y"
-  else if (status == -2)
-    c = "U"
-  else
-    c = "F"
-
-  if (c == undefined || c == "U")
-    return "U";
+  let c = "S";
   const t = Math.round(new Date(time).getTime()/1000).toString();
-  if (c == "S")
-    return c + t;
-  else
-    return c + "O" + t;
+  return c + t;
 };
 
 const human = function(size) {
@@ -33,9 +19,13 @@ const human = function(size) {
 module.exports = async function (siteUrl) {
   const name_func = await cname();
   const site = await (await fetch(siteUrl)).json();
-  const repos = await (await fetch("https://mirrors.neusoft.edu.cn/repos.html")).json();
+  const repos = await (await fetch("https://mirrors.neusoft.edu.cn/index.json")).json();
 
-  const mirrors = [];
+  const mirrors = [{
+    cname: "gentoo-portage",
+    url: "/gentoo-portage",
+    status: "U"
+  }];
   for (const k in repos) {
     const cname = name_func(k)
     const url = "/" + k;
@@ -44,7 +34,7 @@ module.exports = async function (siteUrl) {
       cname,
       url,
       size,
-      status: statusConverter(repos[k].time, repos[k].status)
+      status: statusConverter(repos[k].date)
     })
   }
 
