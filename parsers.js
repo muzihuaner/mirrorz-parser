@@ -1,4 +1,3 @@
-const lzu = require("./lzu");
 const nju = require("./nju");
 const neusoft = require("./neusoft");
 const tuna = require("./tuna");
@@ -32,7 +31,6 @@ const config = require('./config.json')
 const site = (abbr) => config.url + '/static/json/site/' + abbr + '.json';
 
 module.exports = {
-  "lzu"     : async () => lzu     (site("lzu"     )),
   "nju"     :             nju                       ,
   "neusoft" : async () => neusoft (site("neusoft" )),
   "tuna"    : async () => tuna    (site("tuna"    )),
