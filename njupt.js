@@ -10,32 +10,6 @@ module.exports = async function (siteUrl) {
     m["help"] = "/help" + m.url;
   }
 
-  // ad-hoc modification from https://mirrors.njupt.edu.cn/static/js/index.js
-  mirrors.push({
-    cname: "maven",
-    url: "https://mirrors.njupt.edu.cn/help/maven/",
-    upstream: "https://repo1.maven.org/maven2/",
-    status: "C",
-  });
-  mirrors.push({
-    cname: "npm",
-    url: "https://mirrors.njupt.edu.cn/help/npm/",
-    upstream: "https://registry.npmjs.org",
-    status: "C",
-  });
-  mirrors.push({
-    cname: "pypi",
-    url: "https://mirrors.njupt.edu.cn/help/pypi/",
-    upstream: "https://pypi.python.org/",
-    status: "C",
-  });
-  mirrors.push({
-    cname: "rubygems",
-    url: "https://mirrors.njupt.edu.cn/help/rubygems/",
-    upstream: "https://rubygems.org",
-    status: "C",
-  });
-
   return {
     site,
     info,
