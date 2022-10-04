@@ -17,7 +17,7 @@ const statusConverter = function(item) {
 };
 
 const human = function(size) {
-  const scale = ["GiB", "TiB", "PiB"];
+  const scale = ["MiB", "GiB", "TiB", "PiB"];
   let i = 0;
   while (size > 1024) {
     size /= 1024;
@@ -30,7 +30,7 @@ module.exports = async function (siteUrl) {
   const name_func = await cname();
   const site = await (await fetch(siteUrl)).json();
   const disk = await (await fetch("https://mirrors.pku.edu.cn/monitor_device_status/disk_space.json")).json();
-  site.disk = human(disk.latest_values[1]) + "/" + human(disk.latest_values[0] + disk.latest_values[1]);
+  site.disk = human(disk.result.data.slice(-1)[0][1]) + "/" + human(disk.result.data.slice(-1)[0][1] + disk.result.data.slice(-1)[0][2]);
 
   const stat = await (await fetch("https://mirrors.pku.edu.cn/monitor/status")).json();
 
