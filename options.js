@@ -39,11 +39,12 @@ module.exports = async function (optionsUrl, mirrors) {
       if (m.options_name == h.mirrorid)
         m.help = h.url;
 
-  for (const f of options.options.force_redirect_help_mirrors)
-    for (const m of mirrors)
-      // a hack for tuna/bfsu, they put .git in /git/xxx.git
-      if (m.options_name == f && !m.options_name.includes(".git"))
-        m.url = m.help;
+  // force_redirect_help makes mirrorz-302 and mirrorz-help unhappy
+  //for (const f of options.options.force_redirect_help_mirrors)
+  //  for (const m of mirrors)
+  //    // a hack for tuna/bfsu, they put .git in /git/xxx.git
+  //    if (m.options_name == f && !m.options_name.includes(".git"))
+  //      m.url = m.help;
 
   for (const n of options.options.new_mirrors)
     for (const m of mirrors)
@@ -51,9 +52,19 @@ module.exports = async function (optionsUrl, mirrors) {
         m.status += "N";
 
   // a hack for tuna/bfsu, they put .git in /git/xxx.git
-  for (const m of mirrors)
+  // also AOSP/lineageOS/CocoaPods/git-repo/homebrew
+  for (const m of mirrors) {
     if (m.options_name && m.options_name.includes(".git")) // in case of null options_name
       m.url = '/git' + m.url
+    if (m.options_name && (
+        m.options_name === "AOSP" ||
+        m.options_name === "lineageOS" ||
+        m.options_name === "CocoaPods" ||
+        m.options_name === "git-repo" ||
+        m.options_name === "homebrew"
+        ))
+      m.url = '/git' + m.url
+  }
 
   return mirrors;
 };
