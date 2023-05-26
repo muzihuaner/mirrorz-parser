@@ -26,6 +26,7 @@ const bupt = require("./bupt");
 const njtech = require("./njtech");
 const geekpie = require("./geekpie");
 const qlut = require("./qlut");
+const nyist = require("./nyist");
 
 const config = require('./config.json')
 
@@ -62,4 +63,5 @@ module.exports = {
   "njtech"  : async () => lint(await njtech  (site("njtech"  ))),
   "geekpie" : async () => lint(await geekpie (site("geekpie" ))),
   "qlut"    : async () => lint(await qlut    (site("qlut"    ))),
+  "nyist"   : async () => lint(await nyist   (                )),
 };
