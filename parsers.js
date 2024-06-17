@@ -29,6 +29,7 @@ const geekpie = require("./geekpie");
 const qlut = require("./qlut");
 const nyist = require("./nyist");
 const jcut = require("./jcut");
+const nwafu = require("./nwafu");
 
 const config = require('./config.json')
 
@@ -68,4 +69,5 @@ module.exports = {
   "qlut"    : async () => lint(await qlut    (site("qlut"    ))),
   "nyist"   : async () => lint(await nyist   (                )),
   "jcut"    : async () => lint(await jcut    (site("jcut"    ))),
+  "nwafu"   : async () => lint(await nwafu   (site("nwafu"   ))),
 };
