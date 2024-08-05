@@ -19,7 +19,7 @@ const human = function(size) {
 module.exports = async function (siteUrl) {
   const name_func = await cname();
   const site = await (await fetch(siteUrl)).json();
-  const repos = await (await fetch("https://mirrors.neusoft.edu.cn/index.json")).json();
+  const repos = await (await fetch("https://cors.quickso.cn/?https://mirrors.neusoft.edu.cn/index.json")).json();
 
   const mirrors = [{
     cname: "gentoo-portage",
