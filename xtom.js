@@ -5,7 +5,7 @@ module.exports = async function (siteUrl) {
     await fetch(siteUrl)
   ).json();
   const data = await ustclugv1(
-    "https://r.zenithal.workers.dev/https://mirrors.xtom.com/",
+    "https://cors.quickso.cn/?https://mirrors.xtom.com/",
     "https://mirrors.xtom.com/api/v1/metas"
   );
 
