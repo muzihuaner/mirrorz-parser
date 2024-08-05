@@ -4,8 +4,8 @@ const ideal_mirror = require("./ideal-mirror");
 module.exports = async function (siteUrl) {
   const name_func = await cname();
   const site = await (await fetch(siteUrl)).json();
-  const ideal = await ideal_mirror("https://mirror.bjtu.edu.cn/status/task_status.json");
-  const desc_help = await (await fetch("https://mirror.bjtu.edu.cn/help/desc_help.json")).json();
+  const ideal = await ideal_mirror("https://cors.quickso.cn/?https://mirror.bjtu.edu.cn/status/task_status.json");
+  const desc_help = await (await fetch("https://cors.quickso.cn/?https://mirror.bjtu.edu.cn/help/desc_help.json")).json();
 
   const mirrors = []
   for (const d in desc_help) {
