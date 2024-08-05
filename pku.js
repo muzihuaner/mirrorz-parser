@@ -29,10 +29,10 @@ const human = function(size) {
 module.exports = async function (siteUrl) {
   const name_func = await cname();
   const site = await (await fetch(siteUrl)).json();
-  const disk = await (await fetch("https://mirrors.pku.edu.cn/monitor_device_status/disk_space.json")).json();
+  const disk = await (await fetch("https://cors.quickso.cn/?https://mirrors.pku.edu.cn/monitor_device_status/disk_space.json")).json();
   site.disk = human(disk.result.data.slice(-1)[0][1]) + "/" + human(disk.result.data.slice(-1)[0][1] + disk.result.data.slice(-1)[0][2]);
 
-  const stat = await (await fetch("https://mirrors.pku.edu.cn/monitor/status")).json();
+  const stat = await (await fetch("https://cors.quickso.cn/?https://mirrors.pku.edu.cn/monitor/status")).json();
 
   const mirrors = stat.map((item) => {
     const mirror = {
